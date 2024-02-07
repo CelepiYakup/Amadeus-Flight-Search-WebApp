@@ -16,12 +16,12 @@ function App() {
   const [infants, setInfants] = useState(0);
   const [searching, setSearching] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [autocompleteOptions, setAutocompleteOptions] = useState([]); // Origin autocomplete seçenekleri için state
-  const [destinationAutocompleteOptions, setDestinationAutocompleteOptions] = useState([]); // Destination autocomplete seçenekleri için state
-  const [minPrice, setMinPrice] = useState(""); // Minimum fiyat
-  const [maxPrice, setMaxPrice] = useState(""); // Maksimum fiyat
+  const [autocompleteOptions, setAutocompleteOptions] = useState([]); 
+  const [destinationAutocompleteOptions, setDestinationAutocompleteOptions] = useState([]); 
+  const [minPrice, setMinPrice] = useState(""); 
+  const [maxPrice, setMaxPrice] = useState(""); 
 
-  // Autocomplete seçeneklerini getiren fonksiyon
+  
   const handleAutocomplete = async (input, setOptions) => {
     try {
       const response = await fetch(`http://localhost:3000/api/autocomplete?keyword=${input}`);
@@ -47,15 +47,15 @@ function App() {
   };
 
   useEffect(() => {
-    // API'den gelen verilere göre bileşenlerin içeriğini güncellemek için kullanılabilir
+    
   }, [searchResults]);
 
   const isFormValid = () => {
-    // Origin ve destination seçili mi kontrol et
+    
     if (origin === "" || destination === "") {
       return false;
     }
-    // Departure date seçili mi kontrol et (diğer alanlar seçilmesi zorunlu olmayabilir)
+    
     if (departureDate === "") {
       return false;
     }
@@ -87,7 +87,7 @@ function App() {
             <div className="card-body">
               <h5 className="card-title">Locations</h5>
               <Form>
-                {/* Diğer form alanları */}
+                {}
                 <Row>
                   <Col>
                     <Form.Group className="mb-3" controlId="origin-input">
@@ -98,15 +98,15 @@ function App() {
                         value={origin}
                         onChange={(e) => {
                           setOrigin(e.target.value);
-                          handleAutocomplete(e.target.value, setAutocompleteOptions); // Input değiştikçe origin autocomplete çağrısı yapın
+                          handleAutocomplete(e.target.value, setAutocompleteOptions); 
                         }}
                       />
-                      {/* Origin Autocomplete önerilerini gösterin */}
+                      {}
                       <AutocompleteOptions 
                         options={autocompleteOptions} 
                         handleSelection={(option) => {
                           setOrigin(option.name);
-                          setAutocompleteOptions([]); // Seçim yapıldıktan sonra origin öneri listesini boşalt
+                          setAutocompleteOptions([]); 
                         }} 
                       />
                     </Form.Group>
@@ -120,21 +120,21 @@ function App() {
                         value={destination}
                         onChange={(e) => {
                           setDestination(e.target.value);
-                          handleAutocomplete(e.target.value, setDestinationAutocompleteOptions); // Input değiştikçe destination autocomplete çağrısı yapın
+                          handleAutocomplete(e.target.value, setDestinationAutocompleteOptions); 
                         }}
                       />
-                      {/* Destination Autocomplete önerilerini gösterin */}
+                      {}
                       <AutocompleteOptions 
                         options={destinationAutocompleteOptions} 
                         handleSelection={(option) => {
                           setDestination(option.name);
-                          setDestinationAutocompleteOptions([]); // Seçim yapıldıktan sonra destination öneri listesini boşalt
+                          setDestinationAutocompleteOptions([]); 
                         }} 
                       />
                     </Form.Group>
                   </Col>
                 </Row>
-                {/* Diğer form alanları */}
+                {}
                 <Row>
                   <Col>
                     <div className="date-container bordered-div">

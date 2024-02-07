@@ -52,7 +52,7 @@ app.get("/api/search", async (req, res) => {
   }
 });
 
-// Origin ve destination şehir isimlerini havaalanı kodlarına dönüştüren yardımcı fonksiyon
+
 async function cityToAirportCode(cityName) {
   try {
     const { data } = await amadeus.referenceData.locations.get({
@@ -62,11 +62,11 @@ async function cityToAirportCode(cityName) {
     if (data && data.length > 0) {
       return data[0].iataCode;
     } else {
-      throw new Error("Şehir kodu bulunamadı");
+      throw new Error("City code not found");
     }
   } catch (error) {
     console.error(error);
-    throw new Error("Şehir kodu dönüştürülürken bir hata oluştu");
+    throw new Error("An error occurred while converting the city code");
   }
 }
 

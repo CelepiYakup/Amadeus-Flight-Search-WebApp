@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, ListGroup, Spinner } from "react-bootstrap";
-import AutocompleteOptions from "./components/Location/AutocompleteOptions"; // AutocompleteOptions bileşenini ekleyin
+import AutocompleteOptions from "./components/Location/AutocompleteOptions"; 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
